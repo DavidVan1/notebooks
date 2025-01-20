@@ -2,29 +2,69 @@
 
 A set of Jupyter Notebooks showing the usage of Insula's APIs, in particular:
 
-- [Access & Discovery](https://github.com/cgi-italy/notebooks/blob/main/Access%26Discovery.ipynb): query catalogs and collections, download files
-- [SearchAPI](https://github.com/cgi-italy/notebooks/blob/main/SearchAPI.ipynb): catalog search, download api and WMS/WFS capabilities
-- [Data Collections](https://github.com/cgi-italy/notebooks/blob/main/DataCollections.ipynb): create collections and upload files
-- [Processing Services](https://github.com/cgi-italy/notebooks/blob/main/ProcessingServices.ipynb): see available services and launch one
-- [OpenEO](https://github.com/cgi-italy/notebooks/blob/main/OpenEO.ipynb): learn how to use the OpenEO library and services to access external data.
-- [Kubeflow Pipeline](https://github.com/cgi-italy/notebooks/blob/main/Kubeflow_Hello_world.ipynb): Jupyter Notebook to produce yaml file of a simple "Hello world!" pipeline 
+- [Insula Access & Discovery](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaAccess&Discovery.ipynb): query collections and download files
+- [Insula SearchAPI](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaSearchAPI.ipynb): catalog search, download api and WMS/WFS capabilities
+- [Insula Data Collections](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaDataCollections.ipynb): create collections and upload files
+- [Insula Processing Services](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaProcessingServices.ipynb): see available services and launch one.
+This notebook requires to create a demo processor, follow [these instructions](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/SimpleDemoProcessor) to do it
+- [Insula OpenEO](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaOpenEo.ipynb): exploit Insula's OpenEO backend and capabilities (ECOSTRESS dataset).
+- [Copernicus OpenEO](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/CopernicusOpenEO.ipynb): learn how to use the OpenEO library and services to access external OpenEO datasets.
+- [Kubeflow Pipeline](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/KubeflowHelloWorld.ipynb): Jupyter Notebook to produce yaml file of a simple "Hello world!" pipeline
 
-## Create a virtual environment for OpenEO
-By creating a virtual environment, we can install the libraries needed by the OpenEO notebook in a way that they can survive Jupyter server reboots. To do this open a terminal inside Jupyter and use the following commands:
+## Requirements
+Each notebook has a line containing a `pip install` command with only the packages required to run it. If you prefer to install them all they are listed inside the file `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+ 
+## Create a Virtual Environment inside Jupyter 
+If you want these packages to survive Jupyter server reboots a virtual environment can be created. To do it open a terminal inside Jupyter and use the following commands:
 
 ```bash
 # Create a new environment:
-python -m venv /home/jovyan/OpenEoEnv
+python -m venv /home/jovyan/InsulaNotebookEnv
 
 # Make it active:
-source /home/jovyan/OpenEoEnv/bin/activate
+source /home/jovyan/InsulaNotebookEnv/bin/activate
 
 # Install the required packages:
-pip install openeo
-pip install rasterio
-pip install matplotlib
+pip install -r requirements.txt
 
 # Enable the environment for usage in a notebook’s kernel
 pip install ipykernel
-ipython kernel install --user --name=OpenEoEnv
+ipython kernel install --user --name=InsulaNotebookEnv
+```
+
+## How to switch Insula instance
+The first block will always be the one which generates the authorization and connects to the desired endpoint. Just change the values with the ones below to use it on another instance:
+
+- ASCEND:
+```python
+BASE_URL="https://biomass.pal.maap.eo.esa.int"
+insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
+        authorization_endpoint="https://identity.pal.maap.eo.esa.int/realms/biomass/protocol/openid-connect/auth",
+        token_endpoint="https://identity.pal.maap.eo.esa.int/realms/biomass/protocol/openid-connect/token",
+        redirect_uri="http://localhost:9207/auth",
+        client_id="api-client"
+    )
+```
+- DESP:
+```python
+BASE_URL="https://insula.e2e-2.desp.space"
+insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
+        authorization_endpoint="https://iam.e2e-2.desp.space/realms/desp/protocol/openid-connect/auth",
+        token_endpoint="https://iam.e2e-2.desp.space/realms/desp/protocol/openid-connect/token",
+        redirect_uri="https://broker.datawkfl.e2e-2.desp.space",
+        client_id="hda-broker-public"
+    )
+```
+- FS-TEP:
+```python
+BASE_URL="https://foodsecurity-explorer.insula.earth/"
+insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
+        authorization_endpoint="https://identity.insula.earth/realms/foodsecurity-tep/protocol/openid-connect/auth",
+        token_endpoint="https://identity.insula.earth/realms/foodsecurity-tep/protocol/openid-connect/token",
+        redirect_uri="http://localhost:9207/auth",
+        client_id="api-client"
+    )
 ```
