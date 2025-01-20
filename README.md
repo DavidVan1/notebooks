@@ -2,14 +2,14 @@
 
 A set of Jupyter Notebooks showing the usage of Insula's APIs, in particular:
 
-- [Insula Access & Discovery](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaAccess&Discovery.ipynb): query collections and download files
-- [Insula SearchAPI](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaSearchAPI.ipynb): catalog search, download api and WMS/WFS capabilities
-- [Insula Data Collections](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaDataCollections.ipynb): create collections and upload files
-- [Insula Processing Services](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaProcessingServices.ipynb): see available services and launch one.
-This notebook requires to create a demo processor, follow [these instructions](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/SimpleDemoProcessor) to do it
-- [Insula OpenEO](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/InsulaOpenEo.ipynb): exploit Insula's OpenEO backend and capabilities (ECOSTRESS dataset).
-- [Copernicus OpenEO](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/CopernicusOpenEO.ipynb): learn how to use the OpenEO library and services to access external OpenEO datasets.
-- [Kubeflow Pipeline](https://gitlab.dev.eoss-cloud.it/cgi-italy/poieo/manual/insula-notebooks/-/blob/main/KubeflowHelloWorld.ipynb): Jupyter Notebook to produce yaml file of a simple "Hello world!" pipeline
+- [Insula Access & Discovery](https://github.com/cgi-italy/notebooks/blob/main/InsulaAccess&Discovery.ipynb): query collections and download files
+- [Insula SearchAPI](https://github.com/cgi-italy/notebooks/blob/main/InsulaSearchAPI.ipynb): catalog search, download api and WMS/WFS capabilities
+- [Insula Data Collections](https://github.com/cgi-italy/notebooks/blob/main/InsulaDataCollections.ipynb): create collections and upload files
+- [Insula Processing Services](https://github.com/cgi-italy/notebooks/blob/main/InsulaProcessingServices.ipynb): see available services and launch one.
+This notebook requires to create a demo processor, follow [these instructions](https://github.com/cgi-italy/notebooks/blob/main/SimpleDemoProcessor) to do it
+- [Insula OpenEO](https://github.com/cgi-italy/notebooks/blob/main/InsulaOpenEo.ipynb): exploit Insula's OpenEO backend and capabilities (ECOSTRESS dataset).
+- [Copernicus OpenEO](https://github.com/cgi-italy/notebooks/blob/main/CopernicusOpenEO.ipynb): learn how to use the OpenEO library and services to access external OpenEO datasets.
+- [Kubeflow Pipeline](https://github.com/cgi-italy/notebooks/blob/main/KubeflowHelloWorld.ipynb): Jupyter Notebook to produce yaml file of a simple "Hello world!" pipeline
 
 ## Requirements
 Each notebook has a line containing a `pip install` command with only the packages required to run it. If you prefer to install them all they are listed inside the file `requirements.txt`:
