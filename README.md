@@ -10,6 +10,7 @@ This notebook requires to create a demo processor, follow [these instructions](h
 - [Insula OpenEO](https://github.com/cgi-italy/notebooks/blob/main/InsulaOpenEo.ipynb): exploit Insula's OpenEO backend and capabilities (ECOSTRESS dataset).
 - [Copernicus OpenEO](https://github.com/cgi-italy/notebooks/blob/main/CopernicusOpenEO.ipynb): learn how to use the OpenEO library and services to access external OpenEO datasets.
 - [Kubeflow Pipeline](https://github.com/cgi-italy/notebooks/blob/main/KubeflowHelloWorld.ipynb): Jupyter Notebook to produce yaml file of a simple "Hello world!" pipeline
+- [Collection Batch Download Script](https://github.com/cgi-italy/notebooks/blob/main/CollectionBatchDownloadScript): A fully standalone python script of what can be achieved by leveraging Insula APIs. A simple yet often requested use-case that allows us to automatically download all contents from a collection with many files.
 
 ## Requirements
 Each notebook has a line containing a `pip install` command with only the packages required to run it. If you prefer to install them all they are listed inside the file `requirements.txt`:
@@ -38,7 +39,8 @@ ipython kernel install --user --name=InsulaNotebookEnv
 ## How to switch Insula instance
 The first block will always be the one which generates the authorization and connects to the desired endpoint. Just change the values with the ones below to use it on another instance:
 
-- ASCEND:
+
+- ESA-MAAP:
 ```python
 BASE_URL="https://biomass.pal.maap.eo.esa.int"
 insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
@@ -64,6 +66,18 @@ BASE_URL="https://foodsecurity-explorer.insula.earth/"
 insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
         authorization_endpoint="https://identity.insula.earth/realms/foodsecurity-tep/protocol/openid-connect/auth",
         token_endpoint="https://identity.insula.earth/realms/foodsecurity-tep/protocol/openid-connect/token",
+        redirect_uri="http://localhost:9207/auth",
+        client_id="api-client"
+    )
+```
+- PHISAT2:
+Remember that the Phisat2 instance requires a mail verification.
+Before using the API be sure to log-in via ui at least once and complete the verification process.
+```python
+BASE_URL="https://phisat2.insula.earth"
+insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
+        authorization_endpoint="https://identity.insula.earth/realms/phisat2/protocol/openid-connect/auth",
+        token_endpoint="https://identity.insula.earth/realms/phisat2/protocol/openid-connect/token",
         redirect_uri="http://localhost:9207/auth",
         client_id="api-client"
     )
