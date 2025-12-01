@@ -63,7 +63,7 @@ def insula_download_collection():
 
     downloader = InsulaClientDownloader()
 
-    collection_id = 11
+    collection_id = 7
     list_json = downloader.get_file_list(collection_id)
 
     for pf_entry in list_json['_embedded']['platformFiles']:
