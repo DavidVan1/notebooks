@@ -95,4 +95,12 @@ Collections I have access through API.
 | 25 | Phisat2-L2-PhiFireAI        | 0               |
 | 26 | Phisat2-L2-MarineProtection | 0               |
 
-Changed parameters in `config.py` and collection_id in `insula_download_collection.py`.
+Changed nd collection_id in `insula_download_collection.py` to 7 and parameters in `config.py`:
+```python
+class Download:
+    authorization_endpoint="https://identity.insula.earth/realms/phisat2/protocol/openid-connect/auth"
+    token_endpoint="https://identity.insula.earth/realms/phisat2/protocol/openid-connect/token"
+    redirect_uri="http://localhost:9207/auth"
+    client_id="api-client"
+    base_url="https://phisat2.insula.earth"
+```
