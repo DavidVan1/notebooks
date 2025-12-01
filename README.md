@@ -82,3 +82,17 @@ insulaAuth: InsulaOpenIDConnect = InsulaOpenIDConnect(
         client_id="api-client"
     )
 ```
+
+## PhiSat2 Collections
+Collections I have access through API.
+| ID | Name                        | Number of files |
+| -- | --------------------------- | --------------- |
+| 7  | Phisat2-L1                  | 2000+           |
+| 21 | Phisat2-L2-CloudDetection   | 6               |
+| 22 | Phisat2-L2-Sat2Map          | 0               |
+| 23 | Phisat2-L2-VesselDetection  | 0               |
+| 24 | Phisat2-L2-DeepCompression  | 0               |
+| 25 | Phisat2-L2-PhiFireAI        | 0               |
+| 26 | Phisat2-L2-MarineProtection | 0               |
+
+Changed parameters in `config.py` and collection_id in `insula_download_collection.py`.
